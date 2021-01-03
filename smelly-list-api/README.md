@@ -15,14 +15,10 @@ Run the maven wrapper with following command in a terminal window:
 ./mvnw spring-boot:run
 ```
 
-&nbsp;
-
 #### IntelliJ IDEA
 - Open IntelliJ IDEA, File > Open
 - Browse to the [folder](./) where [pom.xml](./pom.xml) is located, and open
 - Run the app from [ApiApplication.java](./src/main/java/com/smellylist/api/ApiApplication.java)
-
-&nbsp;
 
 Verify if the app is deployed by opening [http://localhost:8080/api/marco](http://localhost:8080/api/marco) in your web browser.
 If the service is deployed successfully, you will get the following JSON response:
