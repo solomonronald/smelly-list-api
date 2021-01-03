@@ -4,12 +4,10 @@ Java - Spring Boot app for Smelly List REST API endpoints.
 
 
 ## Requirements
----
 - Java 15
 
 
 ## Installation
----
 
 #### Command Line
 Run the maven wrapper with following command in a terminal window:
@@ -33,12 +31,10 @@ If the service is deployed successfully, you will get the following JSON respons
 ```
 
 ## Swagger UI
----
 When in `dev` profile, you can access Swagger UI by opening [http://localhost:8080/api/swagger-ui/index.html](http://localhost:8080/api/swagger-ui/index.html) in your browser.
 
 
 ## Authorization
----
 Apart from public endpoints mentioned in [publicUrls](./src/main/java/com/smellylist/api/security/WebSecurityConfig.java) variable, you'll need an authorization token to access all other API endpoints.
 
 To add an authorization token in your API requests, add `Authorization` header in your API calls with the following string:
@@ -66,5 +62,4 @@ curl --request GET \
 
 
 ## Notes
----
 If your 8080 port is not available, you can configure your app to use some other port by modifying `server.port` in [application.yml](./src/main/resources/application.yml)
