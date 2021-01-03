@@ -40,7 +40,7 @@ Bearer <your access token>
 
 Some tokens are generated in `dev` profile when you run your app. These tokens can be copied from your **log output**. Three access tokens are generated for all three roles (`Admin`, `Mod` and `User`).
 
-Access token will be available in logs with text &lt;Role&gt; Access Token:
+Access token will be available in logs with text `<Role> Access Token:`
 Example log:
 ```log
 <TIMESTAMP>  INFO 26921 --- [  restartedMain] c.s.api.misc.ApplicationStartup          : Admin Access Token:
