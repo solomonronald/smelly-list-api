@@ -3,10 +3,6 @@
 Java - Spring Boot app for Smelly List REST API endpoints.
 
 
-## Requirements
-- Java 15
-
-
 ## Installation
 
 #### Command Line
