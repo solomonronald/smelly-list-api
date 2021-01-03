@@ -1,1 +1,1 @@
-# smelly-list-api
+# Smelly List API

@@ -1,0 +1,22 @@
+spring:
+  profiles:
+    active: "dev"
+
+---
+
+spring:
+  profiles: dev
+server:
+  port : 8080
+  servlet:
+    contextPath : /api
+jwt:
+  issuer: SmellyList
+  access:
+    expiry:
+      minutes: 30
+    secret: todo-access-dev-secret-change-in-prod
+  refresh:
+    expiry:
+      days: 28
+    secret: todo-refresh-dev-secret-change-in-prod
