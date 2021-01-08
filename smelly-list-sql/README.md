@@ -14,6 +14,14 @@ Log in to your mysql server instance with admin/root credentials and run:
     
     To create a new user and database for smelly list api service.
 
+3. **Run DDL Queries** ([A1-ddl-queries.sql](./common/A1-ddl-queries.sql))
+    
+    To create tables required for Smelly List API.
+
+3. **Add Sample Data** - Dev ([Z1-sample-data.sql](./dev/Z1-sample-data.sql))
+    
+    To add sample data like sample users with hashed passwords, etc for dev testing only.
+
 ## Test newly created user and database
 
 Verify/Test your newly created sql credentials mentioned in [2-initial-admin-setup](./dev/2-initial-admin-setup.sql) by logging into your mysql server instance with them.
