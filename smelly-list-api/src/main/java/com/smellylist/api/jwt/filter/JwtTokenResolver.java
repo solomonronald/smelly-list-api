@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.servlet.http.HttpServletRequest;
 
 @Component
-public class JwtTokenProvider {
+public class JwtTokenResolver {
 
     @Value("${jwt.access.secret}")
     private String jwtAccessSecret;

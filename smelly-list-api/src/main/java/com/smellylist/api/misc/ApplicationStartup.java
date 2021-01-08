@@ -25,14 +25,16 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     }
 
     private void logAccessTokens() {
-        String adminAccessToken = authService.generateAccessToken("testAdmin1", "amu");
+        String adminAccessToken = authService.generateAccessToken("testAdmin1", 7);
         logger.info("Admin Access Token:\n" + adminAccessToken);
 
-        String modAccessToken = authService.generateAccessToken("testMod1", "mu");
+        String modAccessToken = authService.generateAccessToken("testMod1", 3);
         logger.info("Mod Access Token:\n" + modAccessToken);
 
-        String userAccessToken = authService.generateAccessToken("testUser1", "u");
+        String userAccessToken = authService.generateAccessToken("testUser1", 1);
         logger.info("User Access Token:\n" + userAccessToken);
+
+        logger.info("Sample Admin Username 'admin' with password '123456'");
 
     }
 }
