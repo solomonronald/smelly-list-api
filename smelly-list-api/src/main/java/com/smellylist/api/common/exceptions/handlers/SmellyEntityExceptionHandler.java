@@ -1,4 +1,4 @@
-package com.smellylist.api.exceptions.handlers;
+package com.smellylist.api.common.exceptions.handlers;
 
 import com.smellylist.api.common.models.response.SimpleExceptionResponse;
 import org.slf4j.Logger;

@@ -4,7 +4,6 @@ import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smellylist.api.common.models.response.SimpleExceptionResponse;
-import com.smellylist.api.exceptions.handlers.SmellyEntityExceptionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -24,10 +23,10 @@ public class JwtTokenFilter extends OncePerRequestFilter {
 
     private final Logger logger = LoggerFactory.getLogger(JwtTokenFilter.class);
 
-    private final JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenResolver jwtTokenResolver;
 
-    public JwtTokenFilter(JwtTokenProvider jwtTokenProvider) {
-        this.jwtTokenProvider = jwtTokenProvider;
+    public JwtTokenFilter(JwtTokenResolver jwtTokenResolver) {
+        this.jwtTokenResolver = jwtTokenResolver;
     }
 
     @Override
@@ -36,10 +35,10 @@ public class JwtTokenFilter extends OncePerRequestFilter {
             HttpServletResponse httpServletResponse,
             FilterChain filterChain
     ) throws ServletException, IOException {
-        String token = jwtTokenProvider.resolveToken(httpServletRequest);
+        String token = jwtTokenResolver.resolveToken(httpServletRequest);
         try {
             if (token != null) {
-                Authentication auth = jwtTokenProvider.getAuthentication(token);
+                Authentication auth = jwtTokenResolver.getAuthentication(token);
                 SecurityContextHolder.getContext().setAuthentication(auth);
             } else {
                 // this is very important, since it guarantees the user is not authenticated at all

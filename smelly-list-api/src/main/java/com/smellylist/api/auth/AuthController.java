@@ -1,5 +1,6 @@
 package com.smellylist.api.auth;
 
+import com.smellylist.api.auth.exceptions.SignInException;
 import com.smellylist.api.auth.models.SignInRequest;
 import com.smellylist.api.auth.models.SignInResponse;
 import io.swagger.annotations.ApiParam;
@@ -26,7 +27,6 @@ public class AuthController {
 
     /**
      * Endpoint for user to sign in.
-     * TODO: Validate user, Add exception handling for failed password attempts.
      * @param signInRequest username and password request
      * @return access and refresh tokens
      */
@@ -35,20 +35,9 @@ public class AuthController {
             @ApiResponse(code = 200, message = "Sign In Successful", response = SignInResponse.class)
     })
     @PostMapping(value = "/sign_in", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> signIn(@ApiParam("SignIn Request") @Valid @RequestBody SignInRequest signInRequest) {
-
-        // TODO: When integrated with database, fetch credentials after validating user.
-        String publicUserId = "pubUid1";
-        String encodedRole = "mu";
-
-        String accessToken = authService.generateAccessToken(publicUserId, encodedRole);
-        String refreshToken = authService.generateRefreshToken(publicUserId, encodedRole);
-
-        SignInResponse signInResponse = new SignInResponse(accessToken, refreshToken);
-
+    public ResponseEntity<?> signIn(@ApiParam("SignIn Request") @Valid @RequestBody SignInRequest signInRequest) throws SignInException {
+        var signInResponse= authService.signIn(signInRequest);
         return new ResponseEntity<>(signInResponse, HttpStatus.OK);
     }
-
-    // TODO: Add exception handling for auth failures
 
 }

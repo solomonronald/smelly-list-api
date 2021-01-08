@@ -4,11 +4,10 @@ import com.smellylist.api.common.Constants;
 import com.smellylist.api.security.handlers.SmellyAccessDeniedHandler;
 import com.smellylist.api.security.handlers.SmellyAuthenticationEntryPoint;
 import com.smellylist.api.jwt.filter.JwtTokenFilterConfigurationAdapter;
-import com.smellylist.api.jwt.filter.JwtTokenProvider;
+import com.smellylist.api.jwt.filter.JwtTokenResolver;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -29,7 +28,7 @@ import java.util.Arrays;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private JwtTokenProvider jwtTokenProvider;
+    private JwtTokenResolver jwtTokenResolver;
 
     @Autowired
     private Environment environment;
@@ -74,7 +73,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                  .authenticationEntryPoint(authenticationEntryPoint())
                  .and()
                  // Apply JWT Filter
-                 .apply(new JwtTokenFilterConfigurationAdapter(jwtTokenProvider))
+                 .apply(new JwtTokenFilterConfigurationAdapter(jwtTokenResolver))
                  .and()
                  // No session will be created or used by spring security
                  .sessionManagement()

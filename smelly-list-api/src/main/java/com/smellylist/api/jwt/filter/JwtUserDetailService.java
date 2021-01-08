@@ -34,8 +34,7 @@ public class JwtUserDetailService implements UserDetailsService {
         Algorithm accessAlgorithm = SmellyJwtAlgorithm.getAccessTokenAlgorithm(jwtAccessSecret);
 
         // Verify JWT
-        JWTVerifier.BaseVerification verification = (JWTVerifier.BaseVerification) JWT.require(accessAlgorithm)
-                .withIssuer(jwtIssuer);
+        JWTVerifier.BaseVerification verification = (JWTVerifier.BaseVerification) JWT.require(accessAlgorithm);
         // Verify with clock shift
         JWTVerifier verifier = verification.build(new SmellyJwtClock());
 
@@ -46,7 +45,7 @@ public class JwtUserDetailService implements UserDetailsService {
         String publicId = jwt.getSubject();
 
         // Get encoded role string from JWT claims
-        String roles = jwt.getClaim(Constants.ROLE_CLAIM).asString();
+        var roles = jwt.getClaim(Constants.ROLE_CLAIM).asInt();
 
         // Return a spring UserDetails object
         return User.withUsername(publicId)
