@@ -1,9 +1,12 @@
 # Smelly List API - App
 
-Java - Spring Boot app for Smelly List REST API endpoints.
+Java - Spring Boot app for Smelly List HTTP API endpoints.
 
 
 ## Installation
+
+#### Setup Database
+Follow the steps [here](./../smelly-list-sql/README.md) to setup database & tables required for the app to run.
 
 #### Command Line
 Run the maven wrapper with following command in a terminal window:
